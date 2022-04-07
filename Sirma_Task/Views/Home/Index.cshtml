@@ -1,0 +1,47 @@
+﻿@using Sirma_Task.Models;
+@model IEnumerable<pairEmp>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List of Pairs</title>
+</head>
+<body>
+    <div class="container">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="postedFile" />
+            <input type="submit" value="Import" />
+        }
+
+        @if (Model.Count() > 0)
+        {
+            <table class="table" cellpadding="0" cellspacing="0">
+                <tr>
+                    <th>EmpID#1</th>
+                    <th>EmpID#2</th>
+                    <th>ProjectID</th>
+                    <th>DaysWorked</th>
+                </tr>
+                @foreach (pairEmp emp in Model)
+                {
+                    <tr>
+                        <td>@emp.FirstEmpID</td>
+                        <td>@emp.SecondEmpID</td>
+                        <td>@emp.ProjectID</td>
+                        <td>@emp.Duration</td>
+                    </tr>
+                }
+            </table>
+        }
+
+    </div>
+</body>
+</html>
