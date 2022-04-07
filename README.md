@@ -1,5 +1,5 @@
 # sirma Task
-The project is created in Asp.Net MVC 5. I did not use the Entity Framework and the database. I used two models (in the Models folder). It is necessary to select data file (for checking the operability, there are two files with the extension txt and csv in the main folder). After selecting the file, it is necessary to press the button “Import”. The file is red on the fly and data outputs immediately on the page.
+The project is created on Asp.Net MVC 5. I did not use the Entity Framework and the database. I used two models (in the Models folder). It is necessary to select data file (for checking the operability, there are two files with txt and csv extension in the main folder). After selecting the file, it is necessary to press the button “Import”. The file is red on the fly and data outputs immediately on the page.
 All pairs without exception are displayed on the page. For example, employee #1 and employee #2, as well as employee #2 and employee #1. If this is not necessary, I can add another loop and eliminate cross-matches.
 
 # VS2019 folder
