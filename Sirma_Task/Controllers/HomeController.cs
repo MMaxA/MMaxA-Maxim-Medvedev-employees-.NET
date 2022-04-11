@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -63,14 +63,14 @@ namespace Sirma_Task.Controllers
                         {
                             if (employees[x].ProjectID == employees[y].ProjectID && employees[x].EmpId != employees[y].EmpId)
                             {
-                                if (employees[y].DateFrom > employees[x].DateFrom && employees[y].DateFrom < employees[x].DateTo)
+                                if (employees[y].DateFrom >= employees[x].DateFrom && employees[y].DateFrom <= employees[x].DateTo)
                                 {
                                     for (DateTime a = employees[x].DateFrom; a <= employees[x].DateTo; a = a.AddDays(1))
                                     {
                                         for (DateTime b = employees[y].DateFrom; b <= employees[y].DateTo; b = b.AddDays(1))
-                                        {
-                                            if (a == b)
-                                                duration += 1;
+                                        {                                            
+                                            if(a==b)
+                                            duration += 1;
                                         }
                                     }
 
@@ -87,14 +87,15 @@ namespace Sirma_Task.Controllers
                                     }
                                 }
 
+
                                 if (employees[x].DateFrom > employees[y].DateFrom && employees[x].DateFrom <= employees[y].DateTo)
                                 {
                                     for (DateTime a = employees[x].DateFrom; a <= employees[x].DateTo; a = a.AddDays(1))
                                     {
                                         for (DateTime b = employees[y].DateFrom; b <= employees[y].DateTo; b = b.AddDays(1))
-                                        {
-                                            if (a == b)
-                                                duration += 1;
+                                        {                                            
+                                            if(a==b)
+                                            duration += 1;
                                         }
                                     }
 
@@ -119,8 +120,17 @@ namespace Sirma_Task.Controllers
                     ViewBag.Message = e.ToString();
                 }
             }
-            return View(pairEmp);
-        }
 
+            for (int i = 0; i < pairEmp.Count-1; i++)
+            {
+                if (pairEmp[i].FirstEmpID == pairEmp[i+1].SecondEmpID && pairEmp[i+1].FirstEmpID == pairEmp[i].SecondEmpID)
+                {
+                    pairEmp.Remove(pairEmp[i + 1]);
+                }
+            }
+
+            return View(pairEmp);            
+        }
+        
     }
 }
